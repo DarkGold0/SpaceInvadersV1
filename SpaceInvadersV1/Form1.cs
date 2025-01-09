@@ -5,6 +5,7 @@ namespace SpaceInvadersV1
 {
     public partial class Form1 : Form
     {
+        bool menu = false;
         bool goRight, goLeft;
         int playerSpeed = 12;
         int enemySpeed = 5;
@@ -19,21 +20,25 @@ namespace SpaceInvadersV1
         public Form1()
         {
             InitializeComponent();
-            GameSetup();
+            //GameSetup();
+            //ClearAll();
+            MainMenu();
         }
-         
+
         private void mainGameTimerEvent(object sender, EventArgs e)
         {
             killsTxt.Text = "Kills: " + kills;
 
-            if (goLeft)
+            if (goLeft && player.Left > 0)
             {
                 player.Left -= playerSpeed;
             }
-            if (goRight)
+            if (goRight && player.Left < 1162)
             {
                 player.Left += playerSpeed;
             }
+
+
 
             enemyBulletTimer -= 10;
 
@@ -48,10 +53,10 @@ namespace SpaceInvadersV1
                 if (x is PictureBox && (string)x.Tag == "enemy")
                 {
                     x.Left += enemySpeed;
-                    if (x.Left > 730)
+                    if (x.Left > 1280) //730
                     {
-                        x.Top += 65;
-                        x.Left = -80;
+                        x.Top += 100;  //65
+                        x.Left = -100;  //80
                     }
                     if (x.Bounds.IntersectsWith(player.Bounds))
                     {
@@ -115,6 +120,22 @@ namespace SpaceInvadersV1
             {
                 goRight = true;
             }
+            if(e.KeyCode == Keys.Enter && menu == true)
+            {
+                mainPicturebox.Visible = false;
+                titleTxt.Visible = false;
+                credit1txt.Visible = false;
+                spriteImage.Visible = false;
+                startTxt.Visible = false;
+                player.Visible = true;
+                timeTxt.Visible = true;
+                scoreTxt.Visible = true;
+                killsTxt.Visible = true;
+                pictureBox1.Visible = true;
+                panel1.Visible = true;
+
+                GameSetup();
+            }
         }
 
         private void keyUp(object sender, KeyEventArgs e)
@@ -132,7 +153,7 @@ namespace SpaceInvadersV1
                 shooting = true;
                 MakeBullet("bullet");
             }
-            if (e.KeyCode == Keys.Enter && isGameOver == true)
+            if (e.KeyCode == Keys.Enter && isGameOver == true && menu == false)
             {
                 RemoveAll();
                 GameSetup();
@@ -141,26 +162,29 @@ namespace SpaceInvadersV1
 
         private void MakeInvaders()
         {
-            string enemyPath = @"C:\Users\alessandro.mercandi\source\repos\DarkGold0\SpaceInvadersV1\SpaceInvadersV1\Images\enemy1.png";
+            //string enemyPath = @"C:\Users\alessandro.mercandi\source\repos\DarkGold0\SpaceInvadersV1\SpaceInvadersV1\Images\enemy1.png";
+            //string enemyPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "images", "enemySad.png"));
+            string enemyPath = @"..\..\..\images\enemySad.png";
             enemyArray = new PictureBox[15];
             int left = 0;
 
             for (int i = 0; i < enemyArray.Length; i++)
             {
                 enemyArray[i] = new PictureBox();
-                enemyArray[i].Size = new Size(60, 50);
+                enemyArray[i].Size = new Size(80, 80);
                 enemyArray[i].Image = Image.FromFile(enemyPath);
                 enemyArray[i].Top = 67;
                 enemyArray[i].Tag = "enemy";
                 enemyArray[i].Left = left;
                 enemyArray[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 this.Controls.Add(enemyArray[i]);
-                left -= 80;
+                left -= 100;
             }
         }
 
         private void GameSetup()
         {
+            menu = false;
             scoreTxt.Text = "Score: 0";
             kills = 0;
             score = 0;
@@ -202,7 +226,8 @@ namespace SpaceInvadersV1
 
         private void MakeBullet(string bulletTag)
         {
-            string bulletPath = @"C:\Users\alessandro.mercandi\source\repos\DarkGold0\SpaceInvadersV1\SpaceInvadersV1\Images\bullet1.png";
+            //string bulletPath = @"C:\Users\alessandro.mercandi\source\repos\DarkGold0\SpaceInvadersV1\SpaceInvadersV1\Images\bullet1.png";
+            string bulletPath = @"..\..\..\images\bullet1.png";
             PictureBox bullet = new PictureBox();
             bullet.Image = Image.FromFile(bulletPath);
             bullet.Size = new Size(5, 20);
@@ -221,6 +246,40 @@ namespace SpaceInvadersV1
             this.Controls.Add(bullet);
             bullet.BringToFront();
         }
+
+        private void ClearAll()
+        {
+            kills = 0;
+            score = 0;
+            isGameOver = false;
+            shooting = false;
+            gameTimer.Stop();
+
+            player.Visible = false;
+            timeTxt.Visible = false;
+            scoreTxt.Visible = false;
+            killsTxt.Visible = false;
+            pictureBox1.Visible = false;
+            panel1.Visible = false;
+        }
+
+        private void MainMenu()
+        {
+            menu = true;
+            mainPicturebox.Visible = true;
+            titleTxt.Visible = true;
+            credit1txt.Visible = true;
+            spriteImage.Visible = true;
+            startTxt.Visible = true;
+            gameTimer.Stop();
+            player.Visible = false;
+            timeTxt.Visible = false;
+            scoreTxt.Visible = false;
+            killsTxt.Visible = false;
+            pictureBox1.Visible = false;
+            panel1.Visible = false;
+        }
+
     }
 }
 

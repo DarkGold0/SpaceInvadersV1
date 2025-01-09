@@ -21,7 +21,7 @@ namespace SpaceInvadersV1
             InitializeComponent();
             GameSetup();
         }
-
+         
         private void mainGameTimerEvent(object sender, EventArgs e)
         {
             killsTxt.Text = "Kills: " + kills;

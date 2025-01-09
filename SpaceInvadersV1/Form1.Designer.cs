@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            PictureBox player;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            player = new PictureBox();
             panel1 = new Panel();
             killsTxt = new Label();
             scoreTxt = new Label();
             pictureBox1 = new PictureBox();
             timeTxt = new Label();
             gameTimer = new System.Windows.Forms.Timer(components);
+            player = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,10 +47,10 @@
             // 
             player.BackColor = Color.Black;
             player.Image = (Image)resources.GetObject("player.Image");
-            player.Location = new Point(446, 446);
+            player.Location = new Point(325, 464);
             player.Name = "player";
-            player.Size = new Size(88, 73);
-            player.SizeMode = PictureBoxSizeMode.StretchImage;
+            player.Size = new Size(85, 85);
+            player.SizeMode = PictureBoxSizeMode.Zoom;
             player.TabIndex = 0;
             player.TabStop = false;
             // 
@@ -62,7 +63,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(960, 42);
+            panel1.Size = new Size(734, 42);
             panel1.TabIndex = 1;
             // 
             // killsTxt
@@ -71,7 +72,7 @@
             killsTxt.BackColor = Color.Black;
             killsTxt.Font = new Font("Impact", 14.25F);
             killsTxt.ForeColor = Color.White;
-            killsTxt.Location = new Point(757, 9);
+            killsTxt.Location = new Point(488, 9);
             killsTxt.Name = "killsTxt";
             killsTxt.Size = new Size(51, 23);
             killsTxt.TabIndex = 2;
@@ -83,7 +84,7 @@
             scoreTxt.BackColor = Color.Black;
             scoreTxt.Font = new Font("Impact", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             scoreTxt.ForeColor = Color.White;
-            scoreTxt.Location = new Point(838, 9);
+            scoreTxt.Location = new Point(562, 9);
             scoreTxt.Name = "scoreTxt";
             scoreTxt.Size = new Size(73, 23);
             scoreTxt.TabIndex = 1;
@@ -120,7 +121,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(960, 540);
+            ClientSize = new Size(734, 561);
             Controls.Add(timeTxt);
             Controls.Add(panel1);
             Controls.Add(player);

@@ -1,3 +1,6 @@
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Windows.Forms.VisualStyles;
+
 namespace SpaceInvadersV1
 {
     public partial class Form1 : Form
@@ -5,6 +8,7 @@ namespace SpaceInvadersV1
         bool goRight, goLeft;
         int playerSpeed = 12;
         int enemySpeed = 5;
+        int kills = 0;
         int score = 0;
         int enemyBulletTimer = 300;
 
@@ -20,7 +24,7 @@ namespace SpaceInvadersV1
 
         private void mainGameTimerEvent(object sender, EventArgs e)
         {
-            scoreTxt.Text = "Score: "+score;
+            killsTxt.Text = "Kills: " + kills;
 
             if (goLeft)
             {
@@ -28,7 +32,7 @@ namespace SpaceInvadersV1
             }
             if (goRight)
             {
-                player.Left *= playerSpeed;
+                player.Left += playerSpeed;
             }
 
             enemyBulletTimer -= 10;
@@ -41,7 +45,7 @@ namespace SpaceInvadersV1
 
             foreach (Control x in this.Controls)
             {
-                if (x is PictureBox && (string)x.Tag == "enemyInvaders")
+                if (x is PictureBox && (string)x.Tag == "enemy")
                 {
                     x.Left += enemySpeed;
                     if (x.Left > 730)
@@ -61,7 +65,7 @@ namespace SpaceInvadersV1
                             {
                                 this.Controls.Remove(x);
                                 this.Controls.Remove(y);
-                                score += 1;
+                                kills += 1;
                                 shooting = false;
                             }
                         }
@@ -80,7 +84,7 @@ namespace SpaceInvadersV1
                 {
                     x.Top += 20;
 
-                    if(x.Top > 620)
+                    if (x.Top > 620)
                     {
                         this.Controls.Remove(x);
                     }
@@ -91,11 +95,11 @@ namespace SpaceInvadersV1
                     }
                 }
             }
-            if (score > 8)
+            if (kills > 8)
             {
-                enemySpeed = 12;
+                enemySpeed = 8;
             }
-            if (score == enemyArray.Length)
+            if (kills == enemyArray.Length)
             {
                 GameOver("YOU WON!");
             }
@@ -137,6 +141,7 @@ namespace SpaceInvadersV1
 
         private void MakeInvaders()
         {
+            string enemyPath = @"C:\Users\alessandro.mercandi\source\repos\DarkGold0\SpaceInvadersV1\SpaceInvadersV1\Images\enemy1.png";
             enemyArray = new PictureBox[15];
             int left = 0;
 
@@ -144,8 +149,8 @@ namespace SpaceInvadersV1
             {
                 enemyArray[i] = new PictureBox();
                 enemyArray[i].Size = new Size(60, 50);
-                enemyArray[i].Image = Properties.Resources.sadFace;
-                enemyArray[i].Top = 5;
+                enemyArray[i].Image = Image.FromFile(enemyPath);
+                enemyArray[i].Top = 67;
                 enemyArray[i].Tag = "enemy";
                 enemyArray[i].Left = left;
                 enemyArray[i].SizeMode = PictureBoxSizeMode.StretchImage;
@@ -157,6 +162,7 @@ namespace SpaceInvadersV1
         private void GameSetup()
         {
             scoreTxt.Text = "Score: 0";
+            kills = 0;
             score = 0;
             isGameOver = false;
 
@@ -172,7 +178,7 @@ namespace SpaceInvadersV1
         {
             isGameOver = true;
             gameTimer.Stop();
-            scoreTxt.Text = "Score: "+score+" "+message;
+            scoreTxt.Text = "Score: " + score + " " + message;
         }
 
         private void RemoveAll()
@@ -196,11 +202,12 @@ namespace SpaceInvadersV1
 
         private void MakeBullet(string bulletTag)
         {
+            string bulletPath = @"C:\Users\alessandro.mercandi\source\repos\DarkGold0\SpaceInvadersV1\SpaceInvadersV1\Images\bullet1.png";
             PictureBox bullet = new PictureBox();
-            bullet.Image = Properties.Resources.bullet;
+            bullet.Image = Image.FromFile(bulletPath);
             bullet.Size = new Size(5, 20);
             bullet.Tag = bulletTag;
-            bullet.Left = player.Left + playerSpeed/2;
+            bullet.Left = player.Left + playerSpeed / 2;
 
             if ((string)bullet.Tag == "bullet")
             {
@@ -214,7 +221,6 @@ namespace SpaceInvadersV1
             this.Controls.Add(bullet);
             bullet.BringToFront();
         }
-
     }
 }
 

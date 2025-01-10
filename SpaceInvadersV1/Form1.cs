@@ -20,9 +20,8 @@ namespace SpaceInvadersV1
         public Form1()
         {
             InitializeComponent();
-            //GameSetup();
-            //ClearAll();
-            MainMenu();
+            GameSetup();
+            //ClearAll(); 
         }
 
         private void mainGameTimerEvent(object sender, EventArgs e)
@@ -122,18 +121,6 @@ namespace SpaceInvadersV1
             }
             if(e.KeyCode == Keys.Enter && menu == true)
             {
-                mainPicturebox.Visible = false;
-                titleTxt.Visible = false;
-                credit1txt.Visible = false;
-                spriteImage.Visible = false;
-                startTxt.Visible = false;
-                player.Visible = true;
-                timeTxt.Visible = true;
-                scoreTxt.Visible = true;
-                killsTxt.Visible = true;
-                pictureBox1.Visible = true;
-                panel1.Visible = true;
-
                 GameSetup();
             }
         }
@@ -263,22 +250,6 @@ namespace SpaceInvadersV1
             panel1.Visible = false;
         }
 
-        private void MainMenu()
-        {
-            menu = true;
-            mainPicturebox.Visible = true;
-            titleTxt.Visible = true;
-            credit1txt.Visible = true;
-            spriteImage.Visible = true;
-            startTxt.Visible = true;
-            gameTimer.Stop();
-            player.Visible = false;
-            timeTxt.Visible = false;
-            scoreTxt.Visible = false;
-            killsTxt.Visible = false;
-            pictureBox1.Visible = false;
-            panel1.Visible = false;
-        }
 
     }
 }

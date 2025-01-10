@@ -1,36 +1,45 @@
-using Microsoft.VisualBasic.ApplicationServices;
-using System.Windows.Forms.VisualStyles;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SpaceInvadersV1
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
         bool menu = false;
         bool goRight, goLeft, goUp, goDown;
         int playerSpeed = 12;
-        int enemySpeed = 4;
+        int enemySpeed = 5;
         int kills = 0;
         int score = 0;
-        int time = 0;
-        int enemyBulletTimer = 300;
+        int enemyBulletTimer = 250;
 
         PictureBox[] enemyArray;
         bool shooting;
         bool isGameOver;
 
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
             GameSetup();
-            //ClearAll();
-
-
+            //ClearAll(); 
         }
 
         private void mainGameTimerEvent(object sender, EventArgs e)
         {
-            
-
             killsTxt.Text = "Kills: " + kills;
 
             if (goLeft && player.Left > 0)
@@ -193,7 +202,7 @@ namespace SpaceInvadersV1
 
             for (int i = 0; i < enemyArray.Length; i++)
             {
-                int randPath = Convert.ToInt32(rand1.Next(1,3));
+                int randPath = Convert.ToInt32(rand1.Next(1, 3));
                 switch (randPath)
                 {
                     case 1:
@@ -232,10 +241,6 @@ namespace SpaceInvadersV1
                 left -= randLeft;
             }
         }
-        private void RandomSprite()
-        {
-
-        }
 
         private void GameSetup()
         {
@@ -245,8 +250,8 @@ namespace SpaceInvadersV1
             score = 0;
             isGameOver = false;
 
-            enemyBulletTimer = 300;
-            enemySpeed = 4;
+            enemyBulletTimer = 250;
+            enemySpeed = 5;
             shooting = false;
 
             MakeInvaders();
@@ -316,13 +321,5 @@ namespace SpaceInvadersV1
             pictureBox1.Visible = false;
             panel1.Visible = false;
         }
-
-        private void labelLivello_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-
-//https://www.youtube.com/watch?v=mV01KuIN8PA&t=2s
-//minuto 37

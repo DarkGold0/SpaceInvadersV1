@@ -214,7 +214,7 @@ namespace SpaceInvadersV1
                 else if (gameOver == 1)
                 {
                     clickSound.Play();
-                    Form2 Livello2 = new Form2();
+                    Form2 Livello2 = new Form2(score);
                     Livello2.Show();
                     this.Hide();
                 }
@@ -294,6 +294,8 @@ namespace SpaceInvadersV1
             retryTxt.Visible = false;
             winTxt.Visible = false;
             continueTxt.Visible = false;
+            outScoreTxt.Visible = false;    
+            totalScoreTxt.Visible = false;
 
 
             enemyBulletTimer = 300;
@@ -313,6 +315,10 @@ namespace SpaceInvadersV1
             {
                 winTxt.Visible = true;
                 continueTxt.Visible = true;
+                outScoreTxt.Text = "Score: "+score;
+                totalScoreTxt.Text = "Total score: "+score;
+                outScoreTxt.Visible = true;
+                totalScoreTxt.Visible = true;
                 winMusic.Play();
             }
             else

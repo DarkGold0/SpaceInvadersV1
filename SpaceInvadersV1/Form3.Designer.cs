@@ -42,6 +42,8 @@
             retryTxt = new Label();
             gameOverTxt = new Label();
             thanksTxt = new Label();
+            totalScoreTxt = new Label();
+            outScoreTxt = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
@@ -179,12 +181,38 @@
             thanksTxt.AutoSize = true;
             thanksTxt.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             thanksTxt.ForeColor = SystemColors.ControlLightLight;
-            thanksTxt.Location = new Point(513, 631);
+            thanksTxt.Location = new Point(516, 77);
             thanksTxt.Name = "thanksTxt";
             thanksTxt.Size = new Size(261, 35);
             thanksTxt.TabIndex = 15;
             thanksTxt.Text = "Thanks for playing <3";
             thanksTxt.Visible = false;
+            // 
+            // totalScoreTxt
+            // 
+            totalScoreTxt.AutoSize = true;
+            totalScoreTxt.BackColor = Color.Transparent;
+            totalScoreTxt.Font = new Font("Impact", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            totalScoreTxt.ForeColor = SystemColors.ButtonHighlight;
+            totalScoreTxt.Location = new Point(418, 549);
+            totalScoreTxt.Name = "totalScoreTxt";
+            totalScoreTxt.Size = new Size(240, 54);
+            totalScoreTxt.TabIndex = 17;
+            totalScoreTxt.Text = "Total score: ";
+            totalScoreTxt.Visible = false;
+            // 
+            // outScoreTxt
+            // 
+            outScoreTxt.AutoSize = true;
+            outScoreTxt.BackColor = Color.Transparent;
+            outScoreTxt.Font = new Font("Impact", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            outScoreTxt.ForeColor = SystemColors.ButtonHighlight;
+            outScoreTxt.Location = new Point(418, 473);
+            outScoreTxt.Name = "outScoreTxt";
+            outScoreTxt.Size = new Size(145, 54);
+            outScoreTxt.TabIndex = 16;
+            outScoreTxt.Text = "Score: ";
+            outScoreTxt.Visible = false;
             // 
             // Form3
             // 
@@ -192,6 +220,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1262, 853);
+            Controls.Add(totalScoreTxt);
+            Controls.Add(outScoreTxt);
             Controls.Add(thanksTxt);
             Controls.Add(continueTxt);
             Controls.Add(winTxt);
@@ -228,5 +258,7 @@
         private Label retryTxt;
         private Label gameOverTxt;
         private Label thanksTxt;
+        private Label totalScoreTxt;
+        private Label outScoreTxt;
     }
 }

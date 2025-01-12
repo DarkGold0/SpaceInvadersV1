@@ -39,16 +39,18 @@ namespace SpaceInvadersV1
         int score = 0;
         int gameOver = -1;
         int enemyBulletTimer = 250;
+        int pastScore = 0;
 
         PictureBox[] enemyArray;
         bool shooting;
         bool isGameOver;
 
-        public Form2()
+        public Form2(int PastScore)
         {
             InitializeComponent();
             GameSetup();
             //ClearAll(); 
+            pastScore = PastScore;
         }
 
         private void mainGameTimerEvent(object sender, EventArgs e)
@@ -222,7 +224,7 @@ namespace SpaceInvadersV1
                 else if (gameOver == 1)
                 {
                     clickSound.Play();
-                    Form3 Livello3 = new Form3();
+                    Form3 Livello3 = new Form3(score);
                     Livello3.Show();
                     this.Hide();
                 }
@@ -305,6 +307,8 @@ namespace SpaceInvadersV1
             retryTxt.Visible = false;
             winTxt.Visible = false;
             continueTxt.Visible = false;
+            outScoreTxt.Visible = false;
+            totalScoreTxt.Visible = false;
 
 
             enemyBulletTimer = 300;
@@ -324,6 +328,10 @@ namespace SpaceInvadersV1
             {
                 winTxt.Visible = true;
                 continueTxt.Visible = true;
+                outScoreTxt.Text = "Score: " + score;
+                totalScoreTxt.Text = "Total score: " + (score + pastScore);
+                outScoreTxt.Visible = true;
+                totalScoreTxt.Visible = true;
                 winMusic.Play();
             }
             else

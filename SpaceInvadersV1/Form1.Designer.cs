@@ -41,6 +41,8 @@
             retryTxt = new Label();
             winTxt = new Label();
             continueTxt = new Label();
+            outScoreTxt = new Label();
+            totalScoreTxt = new Label();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -174,12 +176,40 @@
             continueTxt.Text = "Press enter to continue";
             continueTxt.Visible = false;
             // 
+            // outScoreTxt
+            // 
+            outScoreTxt.AutoSize = true;
+            outScoreTxt.BackColor = Color.Transparent;
+            outScoreTxt.Font = new Font("Impact", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            outScoreTxt.ForeColor = SystemColors.ButtonHighlight;
+            outScoreTxt.Location = new Point(418, 473);
+            outScoreTxt.Name = "outScoreTxt";
+            outScoreTxt.Size = new Size(145, 54);
+            outScoreTxt.TabIndex = 9;
+            outScoreTxt.Text = "Score: ";
+            outScoreTxt.Visible = false;
+            // 
+            // totalScoreTxt
+            // 
+            totalScoreTxt.AutoSize = true;
+            totalScoreTxt.BackColor = Color.Transparent;
+            totalScoreTxt.Font = new Font("Impact", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            totalScoreTxt.ForeColor = SystemColors.ButtonHighlight;
+            totalScoreTxt.Location = new Point(418, 549);
+            totalScoreTxt.Name = "totalScoreTxt";
+            totalScoreTxt.Size = new Size(240, 54);
+            totalScoreTxt.TabIndex = 10;
+            totalScoreTxt.Text = "Total score: ";
+            totalScoreTxt.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1262, 853);
+            Controls.Add(totalScoreTxt);
+            Controls.Add(outScoreTxt);
             Controls.Add(continueTxt);
             Controls.Add(winTxt);
             Controls.Add(retryTxt);
@@ -215,5 +245,7 @@
         private Label retryTxt;
         private Label winTxt;
         private Label continueTxt;
+        private Label outScoreTxt;
+        private Label totalScoreTxt;
     }
 }

@@ -16,11 +16,11 @@ namespace SpaceInvadersV1
         SoundPlayer clickSound = new SoundPlayer(@"..\..\..\Sounds\Click.wav");
         SoundPlayer mainMusic = new SoundPlayer(@"..\..\..\Sounds\MainMusic.wav");
 
-        public Menu1()
+        public Menu1(int score)
         {
             InitializeComponent();
             mainMusic.Play();
-
+            scoreTxt.Text = "Latest score: " + score;
         }
 
         private void Menu1_Load(object sender, EventArgs e)

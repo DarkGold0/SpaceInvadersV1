@@ -32,6 +32,7 @@
             startBtn1 = new Button();
             label1 = new Label();
             credit1txt = new Label();
+            scoreTxt = new Label();
             SuspendLayout();
             // 
             // startBtn1
@@ -73,6 +74,18 @@
             credit1txt.TabIndex = 8;
             credit1txt.Text = "A game by: Alessandro Mercandino";
             // 
+            // scoreTxt
+            // 
+            scoreTxt.AutoSize = true;
+            scoreTxt.BackColor = Color.Transparent;
+            scoreTxt.Font = new Font("Impact", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            scoreTxt.ForeColor = SystemColors.ButtonHighlight;
+            scoreTxt.Location = new Point(12, 18);
+            scoreTxt.Name = "scoreTxt";
+            scoreTxt.Size = new Size(251, 54);
+            scoreTxt.TabIndex = 9;
+            scoreTxt.Text = "Latest score:";
+            // 
             // Menu1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -80,6 +93,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 853);
+            Controls.Add(scoreTxt);
             Controls.Add(credit1txt);
             Controls.Add(label1);
             Controls.Add(startBtn1);
@@ -96,5 +110,6 @@
         private Button startBtn1;
         private Label label1;
         private Label credit1txt;
+        private Label scoreTxt;
     }
 }

@@ -85,6 +85,7 @@
             Controls.Add(startBtn1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Menu1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu1";
             Load += Menu1_Load;
             ResumeLayout(false);

@@ -1,3 +1,4 @@
+
 namespace SpaceInvadersV1
 {
     internal static class Program

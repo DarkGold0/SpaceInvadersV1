@@ -41,6 +41,7 @@
             winTxt = new Label();
             retryTxt = new Label();
             gameOverTxt = new Label();
+            thanksTxt = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
@@ -111,7 +112,7 @@
             // 
             // player
             // 
-            player.BackColor = Color.Black;
+            player.BackColor = Color.Transparent;
             player.Image = (Image)resources.GetObject("player.Image");
             player.Location = new Point(579, 712);
             player.Margin = new Padding(3, 4, 3, 4);
@@ -173,12 +174,25 @@
             gameOverTxt.Text = "GAME OVER";
             gameOverTxt.Visible = false;
             // 
+            // thanksTxt
+            // 
+            thanksTxt.AutoSize = true;
+            thanksTxt.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            thanksTxt.ForeColor = SystemColors.ControlLightLight;
+            thanksTxt.Location = new Point(513, 631);
+            thanksTxt.Name = "thanksTxt";
+            thanksTxt.Size = new Size(261, 35);
+            thanksTxt.TabIndex = 15;
+            thanksTxt.Text = "Thanks for playing <3";
+            thanksTxt.Visible = false;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1262, 853);
+            Controls.Add(thanksTxt);
             Controls.Add(continueTxt);
             Controls.Add(winTxt);
             Controls.Add(retryTxt);
@@ -187,6 +201,7 @@
             Controls.Add(labelLivello);
             Controls.Add(panel1);
             Name = "Form3";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form3";
             Load += Form3_Load;
             KeyDown += keyDown;
@@ -212,5 +227,6 @@
         private Label winTxt;
         private Label retryTxt;
         private Label gameOverTxt;
+        private Label thanksTxt;
     }
 }

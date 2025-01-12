@@ -95,7 +95,7 @@
             // 
             // player
             // 
-            player.BackColor = Color.Black;
+            player.BackColor = Color.Transparent;
             player.Image = (Image)resources.GetObject("player.Image");
             player.Location = new Point(579, 712);
             player.Margin = new Padding(3, 4, 3, 4);
@@ -187,6 +187,7 @@
             Controls.Add(player);
             Controls.Add(panel1);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             Load += Form2_Load;
             KeyDown += keyDown;

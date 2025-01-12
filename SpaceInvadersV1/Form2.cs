@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Numerics;
 using System.Text;
 using System.Threading;
@@ -14,6 +15,17 @@ namespace SpaceInvadersV1
 {
     public partial class Form2 : Form
     {
+        SoundPlayer playerShoot = new SoundPlayer(@"..\..\..\Sounds\PlayerShoot.wav");
+        SoundPlayer enemyShoot = new SoundPlayer(@"..\..\..\Sounds\EnemyShoot.wav");
+        SoundPlayer enemyDeath = new SoundPlayer(@"..\..\..\Sounds\EnemyDeath.wav");
+        SoundPlayer playerDeath = new SoundPlayer(@"..\..\..\Sounds\Death.wav");
+        SoundPlayer winMusic = new SoundPlayer(@"..\..\..\Sounds\Win.wav");
+        SoundPlayer mainMusic = new SoundPlayer(@"..\..\..\Sounds\MainMusic.wav");
+        SoundPlayer level3Music = new SoundPlayer(@"..\..\..\Sounds\Level3.wav");
+        SoundPlayer completeMusic = new SoundPlayer(@"..\..\..\Sounds\Complete.wav");
+        SoundPlayer clickSound = new SoundPlayer(@"..\..\..\Sounds\Click.wav");
+
+
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -84,6 +96,7 @@ namespace SpaceInvadersV1
                     }
                     if (x.Bounds.IntersectsWith(player.Bounds))
                     {
+                        playerDeath.Play();
                         gameOver = 0;
                         GameOver(0);
                     }
@@ -95,6 +108,7 @@ namespace SpaceInvadersV1
                             {
                                 this.Controls.Remove(x);
                                 this.Controls.Remove(y);
+                                enemyDeath.Play();
                                 kills += 1;
                                 score += x.Top * 2;
                                 if (player.Top >= 750)
@@ -131,6 +145,7 @@ namespace SpaceInvadersV1
                     if (x.Bounds.IntersectsWith(player.Bounds))
                     {
                         this.Controls.Remove(x);
+                        playerDeath.Play();
                         gameOver = 0;
                         GameOver(0);
                     }
@@ -192,6 +207,7 @@ namespace SpaceInvadersV1
             if (e.KeyCode == Keys.Space && shooting == false)
             {
                 shooting = true;
+                playerShoot.Play();
                 MakeBullet("bullet");
             }
             if (e.KeyCode == Keys.Enter && isGameOver == true && menu == false)
@@ -200,10 +216,12 @@ namespace SpaceInvadersV1
 
                 if (gameOver == 0)
                 {
+                    clickSound.Play();
                     GameSetup();
                 }
                 else if (gameOver == 1)
                 {
+                    clickSound.Play();
                     Form3 Livello3 = new Form3();
                     Livello3.Show();
                     this.Hide();
@@ -276,6 +294,8 @@ namespace SpaceInvadersV1
 
         private void GameSetup()
         {
+            player.Top = 712;
+            player.Left = 579;
             menu = false;
             scoreTxt.Text = "Score: 0";
             kills = 0;
@@ -304,6 +324,7 @@ namespace SpaceInvadersV1
             {
                 winTxt.Visible = true;
                 continueTxt.Visible = true;
+                winMusic.Play();
             }
             else
             {

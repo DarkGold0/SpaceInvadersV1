@@ -1,6 +1,6 @@
 ﻿namespace SpaceInvadersV1
 {
-    partial class Menu1
+    partial class controlsBtn
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(controlsBtn));
             startBtn1 = new Button();
             label1 = new Label();
             credit1txt = new Label();
             scoreTxt = new Label();
+            showControlsBtn = new Button();
             SuspendLayout();
             // 
             // startBtn1
@@ -86,19 +87,32 @@
             scoreTxt.TabIndex = 9;
             scoreTxt.Text = "Latest score:";
             // 
-            // Menu1
+            // showControlsBtn
+            // 
+            showControlsBtn.BackColor = Color.FromArgb(255, 192, 128);
+            showControlsBtn.Font = new Font("Impact", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            showControlsBtn.Location = new Point(726, 414);
+            showControlsBtn.Name = "showControlsBtn";
+            showControlsBtn.Size = new Size(129, 49);
+            showControlsBtn.TabIndex = 10;
+            showControlsBtn.Text = "Show controls:";
+            showControlsBtn.UseVisualStyleBackColor = false;
+            showControlsBtn.Click += button1_Click_1;
+            // 
+            // controlsBtn
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 853);
+            Controls.Add(showControlsBtn);
             Controls.Add(scoreTxt);
             Controls.Add(credit1txt);
             Controls.Add(label1);
             Controls.Add(startBtn1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Menu1";
+            Name = "controlsBtn";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu1";
             Load += Menu1_Load;
@@ -111,5 +125,6 @@
         private Label label1;
         private Label credit1txt;
         private Label scoreTxt;
+        private Button showControlsBtn;
     }
 }

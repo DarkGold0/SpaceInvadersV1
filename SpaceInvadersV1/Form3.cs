@@ -223,7 +223,7 @@ namespace SpaceInvadersV1
                 else if (gameOver == 2)
                 {
                     clickSound.Play();
-                    Menu1 Menu1 = new Menu1((score + pastScore));
+                    controlsBtn Menu1 = new controlsBtn((score + pastScore));
                     Menu1.Show();
                     this.Hide();
                 }

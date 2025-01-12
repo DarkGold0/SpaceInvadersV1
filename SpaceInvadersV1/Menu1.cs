@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace SpaceInvadersV1
 {
-    public partial class Menu1 : Form
+    public partial class controlsBtn : Form
     {
         SoundPlayer clickSound = new SoundPlayer(@"..\..\..\Sounds\Click.wav");
         SoundPlayer mainMusic = new SoundPlayer(@"..\..\..\Sounds\MainMusic.wav");
 
-        public Menu1(int score)
+        public controlsBtn(int score)
         {
             InitializeComponent();
             mainMusic.Play();
@@ -34,6 +34,13 @@ namespace SpaceInvadersV1
             Form1 Livello1 = new Form1();
             Livello1.Show();
             this.Hide();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //clickSound.Play();
+            Form4 form4 = new Form4();  
+            form4.Show();
         }
     }
 }

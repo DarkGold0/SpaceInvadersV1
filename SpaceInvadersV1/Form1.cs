@@ -12,6 +12,7 @@ namespace SpaceInvadersV1
         int kills = 0;
         int score = 0;
         int time = 0;
+        int gameOver = -1;
         int enemyBulletTimer = 300;
 
         PictureBox[] enemyArray;
@@ -32,6 +33,7 @@ namespace SpaceInvadersV1
             
 
             killsTxt.Text = "Kills: " + kills;
+            scoreTxt.Text = "Score: " + score;
 
             if (goLeft && player.Left > 0)
             {
@@ -73,7 +75,8 @@ namespace SpaceInvadersV1
                     }
                     if (x.Bounds.IntersectsWith(player.Bounds))
                     {
-                        GameOver("GAME OVER");
+                        gameOver = 0;
+                        GameOver(0);
                     }
                     foreach (Control y in this.Controls)
                     {
@@ -84,6 +87,15 @@ namespace SpaceInvadersV1
                                 this.Controls.Remove(x);
                                 this.Controls.Remove(y);
                                 kills += 1;
+                                score += x.Top * 2;
+                                if (player.Top >= 750)
+                                {
+                                    score += player.Top;
+                                }
+                                else
+                                {
+                                    score += Convert.ToInt32(player.Top * 0.5);
+                                }
                                 shooting = false;
                             }
                         }
@@ -102,14 +114,15 @@ namespace SpaceInvadersV1
                 {
                     x.Top += 20;
 
-                    if (x.Top > 620)
+                    if (x.Top > 900)
                     {
                         this.Controls.Remove(x);
                     }
                     if (x.Bounds.IntersectsWith(player.Bounds))
                     {
                         this.Controls.Remove(x);
-                        GameOver("GAME OVER");
+                        gameOver = 0;
+                        GameOver(0);
                     }
                 }
             }
@@ -119,7 +132,8 @@ namespace SpaceInvadersV1
             }
             if (kills == enemyArray.Length)
             {
-                GameOver("YOU WON!");
+                gameOver = 1;
+                GameOver(1);
             }
         }
 
@@ -173,7 +187,17 @@ namespace SpaceInvadersV1
             if (e.KeyCode == Keys.Enter && isGameOver == true && menu == false)
             {
                 RemoveAll();
-                GameSetup();
+
+                if (gameOver == 0)
+                {
+                    GameSetup();
+                }
+                else if (gameOver == 1)
+                {
+                    Form2 Livello2 = new Form2();
+                    Livello2.Show();
+                    this.Hide();
+                }
             }
         }
 
@@ -193,7 +217,7 @@ namespace SpaceInvadersV1
 
             for (int i = 0; i < enemyArray.Length; i++)
             {
-                int randPath = Convert.ToInt32(rand1.Next(1,3));
+                int randPath = Convert.ToInt32(rand1.Next(1,4));
                 switch (randPath)
                 {
                     case 1:
@@ -208,7 +232,7 @@ namespace SpaceInvadersV1
                 }
                 int randLeft = Convert.ToInt32(rand2.Next(90, 200));
                 int randSize = Convert.ToInt32(rand3.Next(70, 90));
-                int randTop = Convert.ToInt32(rand4.Next(1, 3));
+                int randTop = Convert.ToInt32(rand4.Next(1, 4));
                 switch (randTop)
                 {
                     case 1:
@@ -244,6 +268,11 @@ namespace SpaceInvadersV1
             kills = 0;
             score = 0;
             isGameOver = false;
+            gameOverTxt.Visible = false;
+            retryTxt.Visible = false;
+            winTxt.Visible = false;
+            continueTxt.Visible = false;
+
 
             enemyBulletTimer = 300;
             enemySpeed = 4;
@@ -253,11 +282,21 @@ namespace SpaceInvadersV1
             gameTimer.Start();
         }
 
-        private void GameOver(string message)
+        private void GameOver(int x)
         {
             isGameOver = true;
             gameTimer.Stop();
-            scoreTxt.Text = "Score: " + score + " " + message;
+            //scoreTxt.Text = "Score: " + score + " " + message;
+            if (x == 1)
+            {
+                winTxt.Visible = true;
+                continueTxt.Visible = true;
+            }
+            else
+            {
+                gameOverTxt.Visible = true;
+                retryTxt.Visible = true;
+            }
         }
 
         private void RemoveAll()

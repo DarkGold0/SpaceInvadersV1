@@ -37,6 +37,10 @@
             pictureBox1 = new PictureBox();
             gameTimer = new System.Windows.Forms.Timer(components);
             labelLivello = new Label();
+            gameOverTxt = new Label();
+            retryTxt = new Label();
+            winTxt = new Label();
+            continueTxt = new Label();
             ((System.ComponentModel.ISupportInitialize)player).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,7 +50,7 @@
             // 
             player.BackColor = Color.Black;
             player.Image = (Image)resources.GetObject("player.Image");
-            player.Location = new Point(579, 663);
+            player.Location = new Point(579, 712);
             player.Margin = new Padding(3, 4, 3, 4);
             player.Name = "player";
             player.Size = new Size(101, 115);
@@ -118,12 +122,68 @@
             labelLivello.Text = "LEVEL 1";
             labelLivello.Click += labelLivello_Click;
             // 
+            // gameOverTxt
+            // 
+            gameOverTxt.AutoSize = true;
+            gameOverTxt.BackColor = Color.Transparent;
+            gameOverTxt.Font = new Font("Impact", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            gameOverTxt.ForeColor = Color.Red;
+            gameOverTxt.Location = new Point(344, 246);
+            gameOverTxt.Name = "gameOverTxt";
+            gameOverTxt.Size = new Size(590, 145);
+            gameOverTxt.TabIndex = 5;
+            gameOverTxt.Text = "GAME OVER";
+            gameOverTxt.Visible = false;
+            // 
+            // retryTxt
+            // 
+            retryTxt.AutoSize = true;
+            retryTxt.BackColor = Color.Transparent;
+            retryTxt.Font = new Font("Impact", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            retryTxt.ForeColor = Color.Red;
+            retryTxt.Location = new Point(456, 391);
+            retryTxt.Name = "retryTxt";
+            retryTxt.Size = new Size(368, 54);
+            retryTxt.TabIndex = 6;
+            retryTxt.Text = "Press enter to retry";
+            retryTxt.Visible = false;
+            // 
+            // winTxt
+            // 
+            winTxt.AutoSize = true;
+            winTxt.BackColor = Color.Transparent;
+            winTxt.Font = new Font("Impact", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            winTxt.ForeColor = Color.Lime;
+            winTxt.Location = new Point(369, 246);
+            winTxt.Name = "winTxt";
+            winTxt.Size = new Size(533, 145);
+            winTxt.TabIndex = 7;
+            winTxt.Text = "YOU WON!";
+            winTxt.Visible = false;
+            // 
+            // continueTxt
+            // 
+            continueTxt.AutoSize = true;
+            continueTxt.BackColor = Color.Transparent;
+            continueTxt.Font = new Font("Impact", 25.8000011F);
+            continueTxt.ForeColor = Color.Lime;
+            continueTxt.Location = new Point(418, 391);
+            continueTxt.Name = "continueTxt";
+            continueTxt.Size = new Size(440, 54);
+            continueTxt.TabIndex = 8;
+            continueTxt.Text = "Press enter to continue";
+            continueTxt.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1262, 853);
+            Controls.Add(continueTxt);
+            Controls.Add(winTxt);
+            Controls.Add(retryTxt);
+            Controls.Add(gameOverTxt);
             Controls.Add(labelLivello);
             Controls.Add(panel1);
             Controls.Add(player);
@@ -149,5 +209,9 @@
         private Label killsTxt;
         private System.Windows.Forms.Timer gameTimer;
         private Label labelLivello;
+        private Label gameOverTxt;
+        private Label retryTxt;
+        private Label winTxt;
+        private Label continueTxt;
     }
 }

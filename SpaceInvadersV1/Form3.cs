@@ -6,33 +6,32 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpaceInvadersV1
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
-        private void Form2_Load(object sender, EventArgs e)
+
+        private void Form3_Load(object sender, EventArgs e)
         {
 
         }
-
         bool menu = false;
         bool goRight, goLeft, goUp, goDown;
         int playerSpeed = 12;
-        int enemySpeed = 5;
+        int enemySpeed = 6;
         int kills = 0;
         int score = 0;
         int gameOver = -1;
-        int enemyBulletTimer = 250;
+        int enemyBulletTimer = 200;
 
         PictureBox[] enemyArray;
         bool shooting;
         bool isGameOver;
 
-        public Form2()
+        public Form3()
         {
             InitializeComponent();
             GameSetup();
@@ -68,7 +67,7 @@ namespace SpaceInvadersV1
 
             if (enemyBulletTimer < 1)
             {
-                enemyBulletTimer = 250;
+                enemyBulletTimer = 200;
                 MakeBullet("enemyBullet");
             }
 
@@ -83,7 +82,7 @@ namespace SpaceInvadersV1
                         x.Left = -100;  //80
                     }
                     if (x.Bounds.IntersectsWith(player.Bounds))
-                    {
+                    {   
                         gameOver = 0;
                         GameOver(0);
                     }
@@ -105,7 +104,7 @@ namespace SpaceInvadersV1
                                 {
                                     score += Convert.ToInt32(player.Top * 0.5);
                                 }
-                                score *= Convert.ToInt32(1.1);
+                                score *= Convert.ToInt32(1.2);
                                 shooting = false;
                             }
                         }
@@ -136,14 +135,14 @@ namespace SpaceInvadersV1
                     }
                 }
             }
-            if (kills > 10)
+            if (kills > 12) 
             {
-                enemySpeed = 8;
+                enemySpeed = 9;
             }
             if (kills == enemyArray.Length)
-            {
-                gameOver = 1;
-                GameOver(1);
+            {   
+                gameOver = 2;
+                GameOver(2);
             }
         }
 
@@ -202,10 +201,10 @@ namespace SpaceInvadersV1
                 {
                     GameSetup();
                 }
-                else if (gameOver == 1)
+                else if (gameOver == 2)
                 {
-                    Form3 Livello3 = new Form3();
-                    Livello3.Show();
+                    Menu1 Menu1 = new Menu1();
+                    Menu1.Show();
                     this.Hide();
                 }
             }
@@ -215,7 +214,7 @@ namespace SpaceInvadersV1
         {
             //string enemyPath = @"C:\Users\alessandro.mercandi\source\repos\DarkGold0\SpaceInvadersV1\SpaceInvadersV1\Images\enemy1.png";
             //string enemyPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "images", "enemySad.png"));
-            enemyArray = new PictureBox[16];
+            enemyArray = new PictureBox[22];
             int left = 0;
             int top = 0;
             string enemyPath = "";
@@ -242,7 +241,7 @@ namespace SpaceInvadersV1
                 }
                 int randLeft = Convert.ToInt32(rand2.Next(90, 200));
                 int randSize = Convert.ToInt32(rand3.Next(70, 90));
-                int randTop = Convert.ToInt32(rand4.Next(1, 6));
+                int randTop = Convert.ToInt32(rand4.Next(1, 8));
                 switch (randTop)
                 {
                     case 1:
@@ -260,7 +259,12 @@ namespace SpaceInvadersV1
                     case 5:
                         top = 67 + randSize + randSize + randSize + randSize;
                         break;
-
+                    case 6:
+                        top = 67 + randSize + randSize + randSize + randSize + randSize;
+                        break;
+                    case 7:
+                        top = 67 + randSize + randSize + randSize + randSize + randSize + randSize;
+                        break;
                 }
                 enemyArray[i] = new PictureBox();
                 enemyArray[i].Size = new Size(randSize, randSize);
@@ -300,7 +304,7 @@ namespace SpaceInvadersV1
             isGameOver = true;
             gameTimer.Stop();
             //scoreTxt.Text = "Score: " + score + " " + message;
-            if (x == 1)
+            if (x == 2)
             {
                 winTxt.Visible = true;
                 continueTxt.Visible = true;

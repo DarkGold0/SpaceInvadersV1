@@ -30,7 +30,7 @@ namespace SpaceInvadersV1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            clickSound.Play();
+            clickSound.Play(); 
             Form1 Livello1 = new Form1();
             Livello1.Show();
             this.Hide();

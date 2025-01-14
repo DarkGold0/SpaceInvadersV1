@@ -208,6 +208,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1262, 853);
+            AutoScaleMode = None;
             Controls.Add(totalScoreTxt);
             Controls.Add(outScoreTxt);
             Controls.Add(continueTxt);

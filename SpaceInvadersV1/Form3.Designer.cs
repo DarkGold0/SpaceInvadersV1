@@ -216,8 +216,7 @@
             // 
             // Form3
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1262, 853);
             Controls.Add(totalScoreTxt);

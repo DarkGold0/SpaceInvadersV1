@@ -81,7 +81,7 @@
             killsTxt.ForeColor = Color.White;
             killsTxt.Location = new Point(1149, 12);
             killsTxt.Name = "killsTxt";
-            killsTxt.Size = new Size(64, 29);
+            killsTxt.Size = new Size(51, 23);
             killsTxt.TabIndex = 2;
             killsTxt.Text = "Kills: ";
             // 
@@ -93,7 +93,7 @@
             scoreTxt.ForeColor = Color.White;
             scoreTxt.Location = new Point(12, 12);
             scoreTxt.Name = "scoreTxt";
-            scoreTxt.Size = new Size(92, 29);
+            scoreTxt.Size = new Size(73, 23);
             scoreTxt.TabIndex = 1;
             scoreTxt.Text = "Score: 0";
             // 
@@ -119,7 +119,7 @@
             labelLivello.ForeColor = Color.Lime;
             labelLivello.Location = new Point(12, 765);
             labelLivello.Name = "labelLivello";
-            labelLivello.Size = new Size(199, 75);
+            labelLivello.Size = new Size(158, 60);
             labelLivello.TabIndex = 4;
             labelLivello.Text = "LEVEL 1";
             labelLivello.Click += labelLivello_Click;
@@ -130,9 +130,9 @@
             gameOverTxt.BackColor = Color.Transparent;
             gameOverTxt.Font = new Font("Impact", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
             gameOverTxt.ForeColor = Color.Red;
-            gameOverTxt.Location = new Point(344, 246);
+            gameOverTxt.Location = new Point(363, 246);
             gameOverTxt.Name = "gameOverTxt";
-            gameOverTxt.Size = new Size(590, 145);
+            gameOverTxt.Size = new Size(472, 117);
             gameOverTxt.TabIndex = 5;
             gameOverTxt.Text = "GAME OVER";
             gameOverTxt.Visible = false;
@@ -145,7 +145,7 @@
             retryTxt.ForeColor = Color.Red;
             retryTxt.Location = new Point(456, 391);
             retryTxt.Name = "retryTxt";
-            retryTxt.Size = new Size(368, 54);
+            retryTxt.Size = new Size(297, 43);
             retryTxt.TabIndex = 6;
             retryTxt.Text = "Press enter to retry";
             retryTxt.Visible = false;
@@ -156,9 +156,9 @@
             winTxt.BackColor = Color.Transparent;
             winTxt.Font = new Font("Impact", 72F, FontStyle.Regular, GraphicsUnit.Point, 0);
             winTxt.ForeColor = Color.Lime;
-            winTxt.Location = new Point(369, 246);
+            winTxt.Location = new Point(379, 246);
             winTxt.Name = "winTxt";
-            winTxt.Size = new Size(533, 145);
+            winTxt.Size = new Size(425, 117);
             winTxt.TabIndex = 7;
             winTxt.Text = "YOU WON!";
             winTxt.Visible = false;
@@ -171,7 +171,7 @@
             continueTxt.ForeColor = Color.Lime;
             continueTxt.Location = new Point(418, 391);
             continueTxt.Name = "continueTxt";
-            continueTxt.Size = new Size(440, 54);
+            continueTxt.Size = new Size(352, 43);
             continueTxt.TabIndex = 8;
             continueTxt.Text = "Press enter to continue";
             continueTxt.Visible = false;
@@ -184,7 +184,7 @@
             outScoreTxt.ForeColor = SystemColors.ButtonHighlight;
             outScoreTxt.Location = new Point(418, 473);
             outScoreTxt.Name = "outScoreTxt";
-            outScoreTxt.Size = new Size(145, 54);
+            outScoreTxt.Size = new Size(116, 43);
             outScoreTxt.TabIndex = 9;
             outScoreTxt.Text = "Score: ";
             outScoreTxt.Visible = false;
@@ -197,7 +197,7 @@
             totalScoreTxt.ForeColor = SystemColors.ButtonHighlight;
             totalScoreTxt.Location = new Point(418, 549);
             totalScoreTxt.Name = "totalScoreTxt";
-            totalScoreTxt.Size = new Size(240, 54);
+            totalScoreTxt.Size = new Size(192, 43);
             totalScoreTxt.TabIndex = 10;
             totalScoreTxt.Text = "Total score: ";
             totalScoreTxt.Visible = false;
